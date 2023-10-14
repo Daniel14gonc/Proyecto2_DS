@@ -7,3 +7,5 @@ volumes
 MosMedData
 meta_train_with_vertebrae.csv
 train_filtrado.csv
+nifti
+imagenes

@@ -12,3 +12,4 @@ imagenes
 imagenes_train
 logs
 data
+image_train_npy

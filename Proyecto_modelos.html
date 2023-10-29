@@ -1,0 +1,1645 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.335">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>proyecto_modelos</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="Proyecto_modelos_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Proyecto_modelos_files/libs/quarto-html/quarto.js"></script>
+<script src="Proyecto_modelos_files/libs/quarto-html/popper.min.js"></script>
+<script src="Proyecto_modelos_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Proyecto_modelos_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Proyecto_modelos_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Proyecto_modelos_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Proyecto_modelos_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Proyecto_modelos_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Proyecto_modelos_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="proyecto-2-modelos" class="level1">
+<h1>Proyecto 2 modelos</h1>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pydicom</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pydicom.pixel_data_handlers.util <span class="im">import</span> apply_voi_lut</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.animation <span class="im">as</span> animation</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> ndimage</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.nn <span class="im">as</span> nn</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torchvision.transforms <span class="im">as</span> transforms</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torchvision.models <span class="im">as</span> models</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.utils.data <span class="im">import</span> DataLoader, TensorDataset</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.optim <span class="im">as</span> optim</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cv2</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> PIL <span class="im">import</span> Image</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> zipfile <span class="im">import</span> ZipFile</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torchvision <span class="im">import</span> transforms</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.optim <span class="im">as</span> optim</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> torch.utils.tensorboard <span class="im">import</span> SummaryWriter</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.nn <span class="im">as</span> nn</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> efficientnet_pytorch <span class="im">import</span> EfficientNet</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> tqdm <span class="im">import</span> tqdm</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.nn.functional <span class="im">as</span> F</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> precision_score, f1_score</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>sample <span class="op">=</span> <span class="dv">600</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data_VGG <span class="op">=</span> pd.read_csv(<span class="st">'train_filtrado_images.csv'</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>data_VGG <span class="op">=</span> data_VGG.sample(n<span class="op">=</span>sample, random_state<span class="op">=</span><span class="dv">42</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data_vertebrae <span class="op">=</span> pd.read_csv(<span class="st">'meta_train_with_vertebrae.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>train_data, test_data <span class="op">=</span> train_test_split(data_VGG, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Parámetros del modelo</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>vgg_output_size <span class="op">=</span> <span class="dv">1280</span>  <span class="co"># Tamaño de la salida de la VGG16</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>gru_hidden_size <span class="op">=</span> <span class="dv">128</span>  <span class="co"># Tamaño del estado oculto de la GRU</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>gru_num_layers <span class="op">=</span> <span class="dv">2</span>  <span class="co"># Número de capas en la GRU</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>num_classes <span class="op">=</span> <span class="dv">7</span>  <span class="co"># Reemplaza con el número de clases en tu problema</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> WeightedMultiLabelLogLoss(nn.Module):</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, weight<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>(WeightedMultiLabelLogLoss, <span class="va">self</span>).<span class="fu">__init__</span>()</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.weight <span class="op">=</span> weight</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, <span class="bu">input</span>, target):</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">        Computes the weighted multi-label logarithmic loss.</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">        Args:</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">            input (torch.Tensor): Predicted probabilities (output of the model).</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">                                Shape: (batch_size, num_classes)</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co">            target (torch.Tensor): Target labels (ground truth).</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co">                                Shape: (batch_size, num_classes)</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co">        Returns:</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co">            loss (torch.Tensor): Weighted multi-label logarithmic loss.</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>        epsilon <span class="op">=</span> <span class="fl">1e-15</span>  <span class="co"># Small constant to avoid log(0)</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Log loss</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>        log_loss <span class="op">=</span> <span class="op">-</span>target <span class="op">*</span> torch.log(<span class="bu">input</span> <span class="op">+</span> epsilon) <span class="op">-</span> (<span class="dv">1</span> <span class="op">-</span> target) <span class="op">*</span> torch.log(<span class="dv">1</span> <span class="op">-</span> <span class="bu">input</span> <span class="op">+</span> epsilon)</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Apply weights if provided</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.weight <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>            log_loss <span class="op">=</span> log_loss <span class="op">*</span> <span class="va">self</span>.weight</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Compute mean loss over samples and classes</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>        loss <span class="op">=</span> log_loss.mean()</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> loss</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch.nn.functional <span class="im">as</span> F</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> CombinedModel(nn.Module):</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, efficientnet_output_size, gru_hidden_size, gru_num_layers, num_classes):</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>(CombinedModel, <span class="va">self</span>).<span class="fu">__init__</span>()</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Cargar EfficientNet preentrenado</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.efficientnet <span class="op">=</span> models.efficientnet_b0(pretrained<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Eliminar la capa Fully Connected</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.features <span class="op">=</span> nn.Sequential(<span class="op">*</span><span class="bu">list</span>(<span class="va">self</span>.efficientnet.children())[:<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Pooling Global Promedio</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.global_avg_pool <span class="op">=</span> nn.AdaptiveAvgPool2d(<span class="dv">1</span>)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># GRU Layer</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.gru <span class="op">=</span> nn.GRU(input_size<span class="op">=</span>efficientnet_output_size, hidden_size<span class="op">=</span>gru_hidden_size, batch_first<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Fully Connected Layer</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.fc <span class="op">=</span> nn.Linear(gru_hidden_size, <span class="dv">1</span>)</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.dropout <span class="op">=</span> nn.Dropout(<span class="fl">0.5</span>)</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Softmax</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>        <span class="co"># self.softmax = nn.Softmax(dim=1)</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.sigmoid <span class="op">=</span> nn.Sigmoid()</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, x):</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>        batch_size, timesteps, C, H, W <span class="op">=</span> x.size()</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> x.view(batch_size <span class="op">*</span> timesteps, C, H, W)</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Pasar imágenes por EfficientNet</span></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> <span class="va">self</span>.features(x)</span>
+<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Pooling Global Promedio</span></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> <span class="va">self</span>.global_avg_pool(x).squeeze(<span class="op">-</span><span class="dv">1</span>).squeeze(<span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> x.view(batch_size, timesteps, <span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>        <span class="co"># print(x.shape)</span></span>
+<span id="cb8-38"><a href="#cb8-38" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Pasar la secuencia de feature maps por la GRU</span></span>
+<span id="cb8-39"><a href="#cb8-39" aria-hidden="true" tabindex="-1"></a>        out, _ <span class="op">=</span> <span class="va">self</span>.gru(x)</span>
+<span id="cb8-40"><a href="#cb8-40" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Usar solo la última salida de la secuencia</span></span>
+<span id="cb8-41"><a href="#cb8-41" aria-hidden="true" tabindex="-1"></a>        out <span class="op">=</span> out[:, <span class="op">-</span><span class="dv">1</span>, :]</span>
+<span id="cb8-42"><a href="#cb8-42" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Pasar por la capa Fully Connected</span></span>
+<span id="cb8-43"><a href="#cb8-43" aria-hidden="true" tabindex="-1"></a>        out <span class="op">=</span> <span class="va">self</span>.dropout(<span class="va">self</span>.fc(out))</span>
+<span id="cb8-44"><a href="#cb8-44" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Softmax</span></span>
+<span id="cb8-45"><a href="#cb8-45" aria-hidden="true" tabindex="-1"></a>        out <span class="op">=</span> <span class="va">self</span>.sigmoid(out)</span>
+<span id="cb8-46"><a href="#cb8-46" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb8-47"><a href="#cb8-47" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> out</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> torch.cuda.is_available():</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'GPU está disponible'</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'No se encontró GPU, usando CPU'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>GPU está disponible</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crea una instancia del modelo combinado</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>combined_model <span class="op">=</span> CombinedModel(vgg_output_size, gru_hidden_size, gru_num_layers, num_classes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>c:\Users\Daniel\Main\UVG\Semestre_VIII\Data_science\Proyecto2\envi\lib\site-packages\torchvision\models\_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+c:\Users\Daniel\Main\UVG\Semestre_VIII\Data_science\Proyecto2\envi\lib\site-packages\torchvision\models\_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=EfficientNet_B0_Weights.IMAGENET1K_V1`. You can also use `weights=EfficientNet_B0_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>combined_model.to(<span class="st">'cuda'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<pre><code>CombinedModel(
+  (efficientnet): EfficientNet(
+    (features): Sequential(
+      (0): Conv2dNormActivation(
+        (0): Conv2d(3, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): SiLU(inplace=True)
+      )
+      (1): Sequential(
+        (0): MBConv(
+          (block): Sequential(
+            (0): Conv2dNormActivation(
+              (0): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
+              (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (1): SqueezeExcitation(
+              (avgpool): AdaptiveAvgPool2d(output_size=1)
+              (fc1): Conv2d(32, 8, kernel_size=(1, 1), stride=(1, 1))
+              (fc2): Conv2d(8, 32, kernel_size=(1, 1), stride=(1, 1))
+              (activation): SiLU(inplace=True)
+              (scale_activation): Sigmoid()
+            )
+            (2): Conv2dNormActivation(
+              (0): Conv2d(32, 16, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (stochastic_depth): StochasticDepth(p=0.0, mode=row)
+        )
+      )
+      (2): Sequential(
+        (0): MBConv(
+          (block): Sequential(
+            (0): Conv2dNormActivation(
+              (0): Conv2d(16, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (1): Conv2dNormActivation(
+              (0): Conv2d(96, 96, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=96, bias=False)
+              (1): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (2): SqueezeExcitation(
+              (avgpool): AdaptiveAvgPool2d(output_size=1)
+              (fc1): Conv2d(96, 4, kernel_size=(1, 1), stride=(1, 1))
+              (fc2): Conv2d(4, 96, kernel_size=(1, 1), stride=(1, 1))
+              (activation): SiLU(inplace=True)
+              (scale_activation): Sigmoid()
+            )
+            (3): Conv2dNormActivation(
+              (0): Conv2d(96, 24, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (stochastic_depth): StochasticDepth(p=0.0125, mode=row)
+        )
+        (1): MBConv(
+          (block): Sequential(
+            (0): Conv2dNormActivation(
+              (0): Conv2d(24, 144, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(144, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (1): Conv2dNormActivation(
+              (0): Conv2d(144, 144, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=144, bias=False)
+              (1): BatchNorm2d(144, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (2): SqueezeExcitation(
+              (avgpool): AdaptiveAvgPool2d(output_size=1)
+              (fc1): Conv2d(144, 6, kernel_size=(1, 1), stride=(1, 1))
+              (fc2): Conv2d(6, 144, kernel_size=(1, 1), stride=(1, 1))
+              (activation): SiLU(inplace=True)
+              (scale_activation): Sigmoid()
+            )
+            (3): Conv2dNormActivation(
+              (0): Conv2d(144, 24, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (stochastic_depth): StochasticDepth(p=0.025, mode=row)
+        )
+      )
+      (3): Sequential(
+        (0): MBConv(
+          (block): Sequential(
+            (0): Conv2dNormActivation(
+              (0): Conv2d(24, 144, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(144, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (1): Conv2dNormActivation(
+              (0): Conv2d(144, 144, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2), groups=144, bias=False)
+              (1): BatchNorm2d(144, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (2): SqueezeExcitation(
+              (avgpool): AdaptiveAvgPool2d(output_size=1)
+              (fc1): Conv2d(144, 6, kernel_size=(1, 1), stride=(1, 1))
+              (fc2): Conv2d(6, 144, kernel_size=(1, 1), stride=(1, 1))
+              (activation): SiLU(inplace=True)
+              (scale_activation): Sigmoid()
+            )
+            (3): Conv2dNormActivation(
+              (0): Conv2d(144, 40, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(40, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (stochastic_depth): StochasticDepth(p=0.037500000000000006, mode=row)
+        )
+        (1): MBConv(
+          (block): Sequential(
+            (0): Conv2dNormActivation(
+              (0): Conv2d(40, 240, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(240, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (1): Conv2dNormActivation(
+              (0): Conv2d(240, 240, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=240, bias=False)
+              (1): BatchNorm2d(240, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (2): SqueezeExcitation(
+              (avgpool): AdaptiveAvgPool2d(output_size=1)
+              (fc1): Conv2d(240, 10, kernel_size=(1, 1), stride=(1, 1))
+              (fc2): Conv2d(10, 240, kernel_size=(1, 1), stride=(1, 1))
+              (activation): SiLU(inplace=True)
+              (scale_activation): Sigmoid()
+            )
+            (3): Conv2dNormActivation(
+              (0): Conv2d(240, 40, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(40, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (stochastic_depth): StochasticDepth(p=0.05, mode=row)
+        )
+      )
+      (4): Sequential(
+        (0): MBConv(
+          (block): Sequential(
+            (0): Conv2dNormActivation(
+              (0): Conv2d(40, 240, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(240, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (1): Conv2dNormActivation(
+              (0): Conv2d(240, 240, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=240, bias=False)
+              (1): BatchNorm2d(240, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (2): SqueezeExcitation(
+              (avgpool): AdaptiveAvgPool2d(output_size=1)
+              (fc1): Conv2d(240, 10, kernel_size=(1, 1), stride=(1, 1))
+              (fc2): Conv2d(10, 240, kernel_size=(1, 1), stride=(1, 1))
+              (activation): SiLU(inplace=True)
+              (scale_activation): Sigmoid()
+            )
+            (3): Conv2dNormActivation(
+              (0): Conv2d(240, 80, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(80, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (stochastic_depth): StochasticDepth(p=0.0625, mode=row)
+        )
+        (1): MBConv(
+          (block): Sequential(
+            (0): Conv2dNormActivation(
+              (0): Conv2d(80, 480, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(480, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (1): Conv2dNormActivation(
+              (0): Conv2d(480, 480, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=480, bias=False)
+              (1): BatchNorm2d(480, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (2): SqueezeExcitation(
+              (avgpool): AdaptiveAvgPool2d(output_size=1)
+              (fc1): Conv2d(480, 20, kernel_size=(1, 1), stride=(1, 1))
+              (fc2): Conv2d(20, 480, kernel_size=(1, 1), stride=(1, 1))
+              (activation): SiLU(inplace=True)
+              (scale_activation): Sigmoid()
+            )
+            (3): Conv2dNormActivation(
+              (0): Conv2d(480, 80, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(80, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (stochastic_depth): StochasticDepth(p=0.07500000000000001, mode=row)
+        )
+        (2): MBConv(
+          (block): Sequential(
+            (0): Conv2dNormActivation(
+              (0): Conv2d(80, 480, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(480, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (1): Conv2dNormActivation(
+              (0): Conv2d(480, 480, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=480, bias=False)
+              (1): BatchNorm2d(480, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (2): SqueezeExcitation(
+              (avgpool): AdaptiveAvgPool2d(output_size=1)
+              (fc1): Conv2d(480, 20, kernel_size=(1, 1), stride=(1, 1))
+              (fc2): Conv2d(20, 480, kernel_size=(1, 1), stride=(1, 1))
+              (activation): SiLU(inplace=True)
+              (scale_activation): Sigmoid()
+            )
+            (3): Conv2dNormActivation(
+              (0): Conv2d(480, 80, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(80, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (stochastic_depth): StochasticDepth(p=0.08750000000000001, mode=row)
+        )
+      )
+      (5): Sequential(
+        (0): MBConv(
+          (block): Sequential(
+            (0): Conv2dNormActivation(
+              (0): Conv2d(80, 480, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(480, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (1): Conv2dNormActivation(
+              (0): Conv2d(480, 480, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=480, bias=False)
+              (1): BatchNorm2d(480, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (2): SqueezeExcitation(
+              (avgpool): AdaptiveAvgPool2d(output_size=1)
+              (fc1): Conv2d(480, 20, kernel_size=(1, 1), stride=(1, 1))
+              (fc2): Conv2d(20, 480, kernel_size=(1, 1), stride=(1, 1))
+              (activation): SiLU(inplace=True)
+              (scale_activation): Sigmoid()
+            )
+            (3): Conv2dNormActivation(
+              (0): Conv2d(480, 112, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (stochastic_depth): StochasticDepth(p=0.1, mode=row)
+        )
+        (1): MBConv(
+          (block): Sequential(
+            (0): Conv2dNormActivation(
+              (0): Conv2d(112, 672, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(672, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (1): Conv2dNormActivation(
+              (0): Conv2d(672, 672, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=672, bias=False)
+              (1): BatchNorm2d(672, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (2): SqueezeExcitation(
+              (avgpool): AdaptiveAvgPool2d(output_size=1)
+              (fc1): Conv2d(672, 28, kernel_size=(1, 1), stride=(1, 1))
+              (fc2): Conv2d(28, 672, kernel_size=(1, 1), stride=(1, 1))
+              (activation): SiLU(inplace=True)
+              (scale_activation): Sigmoid()
+            )
+            (3): Conv2dNormActivation(
+              (0): Conv2d(672, 112, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (stochastic_depth): StochasticDepth(p=0.1125, mode=row)
+        )
+        (2): MBConv(
+          (block): Sequential(
+            (0): Conv2dNormActivation(
+              (0): Conv2d(112, 672, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(672, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (1): Conv2dNormActivation(
+              (0): Conv2d(672, 672, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=672, bias=False)
+              (1): BatchNorm2d(672, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (2): SqueezeExcitation(
+              (avgpool): AdaptiveAvgPool2d(output_size=1)
+              (fc1): Conv2d(672, 28, kernel_size=(1, 1), stride=(1, 1))
+              (fc2): Conv2d(28, 672, kernel_size=(1, 1), stride=(1, 1))
+              (activation): SiLU(inplace=True)
+              (scale_activation): Sigmoid()
+            )
+            (3): Conv2dNormActivation(
+              (0): Conv2d(672, 112, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (stochastic_depth): StochasticDepth(p=0.125, mode=row)
+        )
+      )
+      (6): Sequential(
+        (0): MBConv(
+          (block): Sequential(
+            (0): Conv2dNormActivation(
+              (0): Conv2d(112, 672, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(672, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (1): Conv2dNormActivation(
+              (0): Conv2d(672, 672, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2), groups=672, bias=False)
+              (1): BatchNorm2d(672, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (2): SqueezeExcitation(
+              (avgpool): AdaptiveAvgPool2d(output_size=1)
+              (fc1): Conv2d(672, 28, kernel_size=(1, 1), stride=(1, 1))
+              (fc2): Conv2d(28, 672, kernel_size=(1, 1), stride=(1, 1))
+              (activation): SiLU(inplace=True)
+              (scale_activation): Sigmoid()
+            )
+            (3): Conv2dNormActivation(
+              (0): Conv2d(672, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (stochastic_depth): StochasticDepth(p=0.1375, mode=row)
+        )
+        (1): MBConv(
+          (block): Sequential(
+            (0): Conv2dNormActivation(
+              (0): Conv2d(192, 1152, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(1152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (1): Conv2dNormActivation(
+              (0): Conv2d(1152, 1152, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=1152, bias=False)
+              (1): BatchNorm2d(1152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (2): SqueezeExcitation(
+              (avgpool): AdaptiveAvgPool2d(output_size=1)
+              (fc1): Conv2d(1152, 48, kernel_size=(1, 1), stride=(1, 1))
+              (fc2): Conv2d(48, 1152, kernel_size=(1, 1), stride=(1, 1))
+              (activation): SiLU(inplace=True)
+              (scale_activation): Sigmoid()
+            )
+            (3): Conv2dNormActivation(
+              (0): Conv2d(1152, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (stochastic_depth): StochasticDepth(p=0.15000000000000002, mode=row)
+        )
+        (2): MBConv(
+          (block): Sequential(
+            (0): Conv2dNormActivation(
+              (0): Conv2d(192, 1152, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(1152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (1): Conv2dNormActivation(
+              (0): Conv2d(1152, 1152, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=1152, bias=False)
+              (1): BatchNorm2d(1152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (2): SqueezeExcitation(
+              (avgpool): AdaptiveAvgPool2d(output_size=1)
+              (fc1): Conv2d(1152, 48, kernel_size=(1, 1), stride=(1, 1))
+              (fc2): Conv2d(48, 1152, kernel_size=(1, 1), stride=(1, 1))
+              (activation): SiLU(inplace=True)
+              (scale_activation): Sigmoid()
+            )
+            (3): Conv2dNormActivation(
+              (0): Conv2d(1152, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (stochastic_depth): StochasticDepth(p=0.1625, mode=row)
+        )
+        (3): MBConv(
+          (block): Sequential(
+            (0): Conv2dNormActivation(
+              (0): Conv2d(192, 1152, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(1152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (1): Conv2dNormActivation(
+              (0): Conv2d(1152, 1152, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=1152, bias=False)
+              (1): BatchNorm2d(1152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (2): SqueezeExcitation(
+              (avgpool): AdaptiveAvgPool2d(output_size=1)
+              (fc1): Conv2d(1152, 48, kernel_size=(1, 1), stride=(1, 1))
+              (fc2): Conv2d(48, 1152, kernel_size=(1, 1), stride=(1, 1))
+              (activation): SiLU(inplace=True)
+              (scale_activation): Sigmoid()
+            )
+            (3): Conv2dNormActivation(
+              (0): Conv2d(1152, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (stochastic_depth): StochasticDepth(p=0.17500000000000002, mode=row)
+        )
+      )
+      (7): Sequential(
+        (0): MBConv(
+          (block): Sequential(
+            (0): Conv2dNormActivation(
+              (0): Conv2d(192, 1152, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(1152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (1): Conv2dNormActivation(
+              (0): Conv2d(1152, 1152, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=1152, bias=False)
+              (1): BatchNorm2d(1152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (2): SqueezeExcitation(
+              (avgpool): AdaptiveAvgPool2d(output_size=1)
+              (fc1): Conv2d(1152, 48, kernel_size=(1, 1), stride=(1, 1))
+              (fc2): Conv2d(48, 1152, kernel_size=(1, 1), stride=(1, 1))
+              (activation): SiLU(inplace=True)
+              (scale_activation): Sigmoid()
+            )
+            (3): Conv2dNormActivation(
+              (0): Conv2d(1152, 320, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (stochastic_depth): StochasticDepth(p=0.1875, mode=row)
+        )
+      )
+      (8): Conv2dNormActivation(
+        (0): Conv2d(320, 1280, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (1): BatchNorm2d(1280, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): SiLU(inplace=True)
+      )
+    )
+    (avgpool): AdaptiveAvgPool2d(output_size=1)
+    (classifier): Sequential(
+      (0): Dropout(p=0.2, inplace=True)
+      (1): Linear(in_features=1280, out_features=1000, bias=True)
+    )
+  )
+  (features): Sequential(
+    (0): Sequential(
+      (0): Conv2dNormActivation(
+        (0): Conv2d(3, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+        (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): SiLU(inplace=True)
+      )
+      (1): Sequential(
+        (0): MBConv(
+          (block): Sequential(
+            (0): Conv2dNormActivation(
+              (0): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=32, bias=False)
+              (1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (1): SqueezeExcitation(
+              (avgpool): AdaptiveAvgPool2d(output_size=1)
+              (fc1): Conv2d(32, 8, kernel_size=(1, 1), stride=(1, 1))
+              (fc2): Conv2d(8, 32, kernel_size=(1, 1), stride=(1, 1))
+              (activation): SiLU(inplace=True)
+              (scale_activation): Sigmoid()
+            )
+            (2): Conv2dNormActivation(
+              (0): Conv2d(32, 16, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (stochastic_depth): StochasticDepth(p=0.0, mode=row)
+        )
+      )
+      (2): Sequential(
+        (0): MBConv(
+          (block): Sequential(
+            (0): Conv2dNormActivation(
+              (0): Conv2d(16, 96, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (1): Conv2dNormActivation(
+              (0): Conv2d(96, 96, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=96, bias=False)
+              (1): BatchNorm2d(96, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (2): SqueezeExcitation(
+              (avgpool): AdaptiveAvgPool2d(output_size=1)
+              (fc1): Conv2d(96, 4, kernel_size=(1, 1), stride=(1, 1))
+              (fc2): Conv2d(4, 96, kernel_size=(1, 1), stride=(1, 1))
+              (activation): SiLU(inplace=True)
+              (scale_activation): Sigmoid()
+            )
+            (3): Conv2dNormActivation(
+              (0): Conv2d(96, 24, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (stochastic_depth): StochasticDepth(p=0.0125, mode=row)
+        )
+        (1): MBConv(
+          (block): Sequential(
+            (0): Conv2dNormActivation(
+              (0): Conv2d(24, 144, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(144, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (1): Conv2dNormActivation(
+              (0): Conv2d(144, 144, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=144, bias=False)
+              (1): BatchNorm2d(144, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (2): SqueezeExcitation(
+              (avgpool): AdaptiveAvgPool2d(output_size=1)
+              (fc1): Conv2d(144, 6, kernel_size=(1, 1), stride=(1, 1))
+              (fc2): Conv2d(6, 144, kernel_size=(1, 1), stride=(1, 1))
+              (activation): SiLU(inplace=True)
+              (scale_activation): Sigmoid()
+            )
+            (3): Conv2dNormActivation(
+              (0): Conv2d(144, 24, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(24, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (stochastic_depth): StochasticDepth(p=0.025, mode=row)
+        )
+      )
+      (3): Sequential(
+        (0): MBConv(
+          (block): Sequential(
+            (0): Conv2dNormActivation(
+              (0): Conv2d(24, 144, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(144, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (1): Conv2dNormActivation(
+              (0): Conv2d(144, 144, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2), groups=144, bias=False)
+              (1): BatchNorm2d(144, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (2): SqueezeExcitation(
+              (avgpool): AdaptiveAvgPool2d(output_size=1)
+              (fc1): Conv2d(144, 6, kernel_size=(1, 1), stride=(1, 1))
+              (fc2): Conv2d(6, 144, kernel_size=(1, 1), stride=(1, 1))
+              (activation): SiLU(inplace=True)
+              (scale_activation): Sigmoid()
+            )
+            (3): Conv2dNormActivation(
+              (0): Conv2d(144, 40, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(40, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (stochastic_depth): StochasticDepth(p=0.037500000000000006, mode=row)
+        )
+        (1): MBConv(
+          (block): Sequential(
+            (0): Conv2dNormActivation(
+              (0): Conv2d(40, 240, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(240, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (1): Conv2dNormActivation(
+              (0): Conv2d(240, 240, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=240, bias=False)
+              (1): BatchNorm2d(240, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (2): SqueezeExcitation(
+              (avgpool): AdaptiveAvgPool2d(output_size=1)
+              (fc1): Conv2d(240, 10, kernel_size=(1, 1), stride=(1, 1))
+              (fc2): Conv2d(10, 240, kernel_size=(1, 1), stride=(1, 1))
+              (activation): SiLU(inplace=True)
+              (scale_activation): Sigmoid()
+            )
+            (3): Conv2dNormActivation(
+              (0): Conv2d(240, 40, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(40, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (stochastic_depth): StochasticDepth(p=0.05, mode=row)
+        )
+      )
+      (4): Sequential(
+        (0): MBConv(
+          (block): Sequential(
+            (0): Conv2dNormActivation(
+              (0): Conv2d(40, 240, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(240, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (1): Conv2dNormActivation(
+              (0): Conv2d(240, 240, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), groups=240, bias=False)
+              (1): BatchNorm2d(240, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (2): SqueezeExcitation(
+              (avgpool): AdaptiveAvgPool2d(output_size=1)
+              (fc1): Conv2d(240, 10, kernel_size=(1, 1), stride=(1, 1))
+              (fc2): Conv2d(10, 240, kernel_size=(1, 1), stride=(1, 1))
+              (activation): SiLU(inplace=True)
+              (scale_activation): Sigmoid()
+            )
+            (3): Conv2dNormActivation(
+              (0): Conv2d(240, 80, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(80, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (stochastic_depth): StochasticDepth(p=0.0625, mode=row)
+        )
+        (1): MBConv(
+          (block): Sequential(
+            (0): Conv2dNormActivation(
+              (0): Conv2d(80, 480, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(480, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (1): Conv2dNormActivation(
+              (0): Conv2d(480, 480, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=480, bias=False)
+              (1): BatchNorm2d(480, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (2): SqueezeExcitation(
+              (avgpool): AdaptiveAvgPool2d(output_size=1)
+              (fc1): Conv2d(480, 20, kernel_size=(1, 1), stride=(1, 1))
+              (fc2): Conv2d(20, 480, kernel_size=(1, 1), stride=(1, 1))
+              (activation): SiLU(inplace=True)
+              (scale_activation): Sigmoid()
+            )
+            (3): Conv2dNormActivation(
+              (0): Conv2d(480, 80, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(80, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (stochastic_depth): StochasticDepth(p=0.07500000000000001, mode=row)
+        )
+        (2): MBConv(
+          (block): Sequential(
+            (0): Conv2dNormActivation(
+              (0): Conv2d(80, 480, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(480, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (1): Conv2dNormActivation(
+              (0): Conv2d(480, 480, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=480, bias=False)
+              (1): BatchNorm2d(480, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (2): SqueezeExcitation(
+              (avgpool): AdaptiveAvgPool2d(output_size=1)
+              (fc1): Conv2d(480, 20, kernel_size=(1, 1), stride=(1, 1))
+              (fc2): Conv2d(20, 480, kernel_size=(1, 1), stride=(1, 1))
+              (activation): SiLU(inplace=True)
+              (scale_activation): Sigmoid()
+            )
+            (3): Conv2dNormActivation(
+              (0): Conv2d(480, 80, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(80, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (stochastic_depth): StochasticDepth(p=0.08750000000000001, mode=row)
+        )
+      )
+      (5): Sequential(
+        (0): MBConv(
+          (block): Sequential(
+            (0): Conv2dNormActivation(
+              (0): Conv2d(80, 480, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(480, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (1): Conv2dNormActivation(
+              (0): Conv2d(480, 480, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=480, bias=False)
+              (1): BatchNorm2d(480, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (2): SqueezeExcitation(
+              (avgpool): AdaptiveAvgPool2d(output_size=1)
+              (fc1): Conv2d(480, 20, kernel_size=(1, 1), stride=(1, 1))
+              (fc2): Conv2d(20, 480, kernel_size=(1, 1), stride=(1, 1))
+              (activation): SiLU(inplace=True)
+              (scale_activation): Sigmoid()
+            )
+            (3): Conv2dNormActivation(
+              (0): Conv2d(480, 112, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (stochastic_depth): StochasticDepth(p=0.1, mode=row)
+        )
+        (1): MBConv(
+          (block): Sequential(
+            (0): Conv2dNormActivation(
+              (0): Conv2d(112, 672, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(672, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (1): Conv2dNormActivation(
+              (0): Conv2d(672, 672, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=672, bias=False)
+              (1): BatchNorm2d(672, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (2): SqueezeExcitation(
+              (avgpool): AdaptiveAvgPool2d(output_size=1)
+              (fc1): Conv2d(672, 28, kernel_size=(1, 1), stride=(1, 1))
+              (fc2): Conv2d(28, 672, kernel_size=(1, 1), stride=(1, 1))
+              (activation): SiLU(inplace=True)
+              (scale_activation): Sigmoid()
+            )
+            (3): Conv2dNormActivation(
+              (0): Conv2d(672, 112, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (stochastic_depth): StochasticDepth(p=0.1125, mode=row)
+        )
+        (2): MBConv(
+          (block): Sequential(
+            (0): Conv2dNormActivation(
+              (0): Conv2d(112, 672, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(672, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (1): Conv2dNormActivation(
+              (0): Conv2d(672, 672, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=672, bias=False)
+              (1): BatchNorm2d(672, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (2): SqueezeExcitation(
+              (avgpool): AdaptiveAvgPool2d(output_size=1)
+              (fc1): Conv2d(672, 28, kernel_size=(1, 1), stride=(1, 1))
+              (fc2): Conv2d(28, 672, kernel_size=(1, 1), stride=(1, 1))
+              (activation): SiLU(inplace=True)
+              (scale_activation): Sigmoid()
+            )
+            (3): Conv2dNormActivation(
+              (0): Conv2d(672, 112, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(112, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (stochastic_depth): StochasticDepth(p=0.125, mode=row)
+        )
+      )
+      (6): Sequential(
+        (0): MBConv(
+          (block): Sequential(
+            (0): Conv2dNormActivation(
+              (0): Conv2d(112, 672, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(672, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (1): Conv2dNormActivation(
+              (0): Conv2d(672, 672, kernel_size=(5, 5), stride=(2, 2), padding=(2, 2), groups=672, bias=False)
+              (1): BatchNorm2d(672, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (2): SqueezeExcitation(
+              (avgpool): AdaptiveAvgPool2d(output_size=1)
+              (fc1): Conv2d(672, 28, kernel_size=(1, 1), stride=(1, 1))
+              (fc2): Conv2d(28, 672, kernel_size=(1, 1), stride=(1, 1))
+              (activation): SiLU(inplace=True)
+              (scale_activation): Sigmoid()
+            )
+            (3): Conv2dNormActivation(
+              (0): Conv2d(672, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (stochastic_depth): StochasticDepth(p=0.1375, mode=row)
+        )
+        (1): MBConv(
+          (block): Sequential(
+            (0): Conv2dNormActivation(
+              (0): Conv2d(192, 1152, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(1152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (1): Conv2dNormActivation(
+              (0): Conv2d(1152, 1152, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=1152, bias=False)
+              (1): BatchNorm2d(1152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (2): SqueezeExcitation(
+              (avgpool): AdaptiveAvgPool2d(output_size=1)
+              (fc1): Conv2d(1152, 48, kernel_size=(1, 1), stride=(1, 1))
+              (fc2): Conv2d(48, 1152, kernel_size=(1, 1), stride=(1, 1))
+              (activation): SiLU(inplace=True)
+              (scale_activation): Sigmoid()
+            )
+            (3): Conv2dNormActivation(
+              (0): Conv2d(1152, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (stochastic_depth): StochasticDepth(p=0.15000000000000002, mode=row)
+        )
+        (2): MBConv(
+          (block): Sequential(
+            (0): Conv2dNormActivation(
+              (0): Conv2d(192, 1152, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(1152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (1): Conv2dNormActivation(
+              (0): Conv2d(1152, 1152, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=1152, bias=False)
+              (1): BatchNorm2d(1152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (2): SqueezeExcitation(
+              (avgpool): AdaptiveAvgPool2d(output_size=1)
+              (fc1): Conv2d(1152, 48, kernel_size=(1, 1), stride=(1, 1))
+              (fc2): Conv2d(48, 1152, kernel_size=(1, 1), stride=(1, 1))
+              (activation): SiLU(inplace=True)
+              (scale_activation): Sigmoid()
+            )
+            (3): Conv2dNormActivation(
+              (0): Conv2d(1152, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (stochastic_depth): StochasticDepth(p=0.1625, mode=row)
+        )
+        (3): MBConv(
+          (block): Sequential(
+            (0): Conv2dNormActivation(
+              (0): Conv2d(192, 1152, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(1152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (1): Conv2dNormActivation(
+              (0): Conv2d(1152, 1152, kernel_size=(5, 5), stride=(1, 1), padding=(2, 2), groups=1152, bias=False)
+              (1): BatchNorm2d(1152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (2): SqueezeExcitation(
+              (avgpool): AdaptiveAvgPool2d(output_size=1)
+              (fc1): Conv2d(1152, 48, kernel_size=(1, 1), stride=(1, 1))
+              (fc2): Conv2d(48, 1152, kernel_size=(1, 1), stride=(1, 1))
+              (activation): SiLU(inplace=True)
+              (scale_activation): Sigmoid()
+            )
+            (3): Conv2dNormActivation(
+              (0): Conv2d(1152, 192, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(192, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (stochastic_depth): StochasticDepth(p=0.17500000000000002, mode=row)
+        )
+      )
+      (7): Sequential(
+        (0): MBConv(
+          (block): Sequential(
+            (0): Conv2dNormActivation(
+              (0): Conv2d(192, 1152, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(1152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (1): Conv2dNormActivation(
+              (0): Conv2d(1152, 1152, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), groups=1152, bias=False)
+              (1): BatchNorm2d(1152, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+              (2): SiLU(inplace=True)
+            )
+            (2): SqueezeExcitation(
+              (avgpool): AdaptiveAvgPool2d(output_size=1)
+              (fc1): Conv2d(1152, 48, kernel_size=(1, 1), stride=(1, 1))
+              (fc2): Conv2d(48, 1152, kernel_size=(1, 1), stride=(1, 1))
+              (activation): SiLU(inplace=True)
+              (scale_activation): Sigmoid()
+            )
+            (3): Conv2dNormActivation(
+              (0): Conv2d(1152, 320, kernel_size=(1, 1), stride=(1, 1), bias=False)
+              (1): BatchNorm2d(320, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+            )
+          )
+          (stochastic_depth): StochasticDepth(p=0.1875, mode=row)
+        )
+      )
+      (8): Conv2dNormActivation(
+        (0): Conv2d(320, 1280, kernel_size=(1, 1), stride=(1, 1), bias=False)
+        (1): BatchNorm2d(1280, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+        (2): SiLU(inplace=True)
+      )
+    )
+    (1): AdaptiveAvgPool2d(output_size=1)
+  )
+  (global_avg_pool): AdaptiveAvgPool2d(output_size=1)
+  (gru): GRU(1280, 128, batch_first=True)
+  (fc): Linear(in_features=128, out_features=1, bias=True)
+  (dropout): Dropout(p=0.5, inplace=False)
+  (sigmoid): Sigmoid()
+)</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define la función para preprocesar las imágenes para VGG16 y CombinedModel</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> preprocess_image_for_combined_model(image):</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Transformaciones para preprocesar las imágenes para VGG16</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    transform <span class="op">=</span> transforms.Compose([</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>        transforms.Resize((<span class="dv">224</span>, <span class="dv">224</span>)),  <span class="co"># Cambiar el tamaño a 224x224 (tamaño de entrada de la VGG16)</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>        transforms.ToTensor(),  <span class="co"># Convertir a tensor</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>        transforms.Normalize(mean<span class="op">=</span>[<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>], std<span class="op">=</span>[<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>])  <span class="co"># Normalización requerida por VGG16</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    ])</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    preprocessed_image <span class="op">=</span> transform(image)  <span class="co"># Aplica las transformaciones</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> preprocessed_image</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> apply_PCA(images):</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    images_flat <span class="op">=</span> images.reshape(images.shape[<span class="dv">0</span>], <span class="op">-</span><span class="dv">1</span>).numpy()  <span class="co"># Aplanar y convertir a numpy</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    pca <span class="op">=</span> PCA(n_components<span class="op">=</span><span class="dv">70</span>)  <span class="co"># Instanciar PCA</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    transformed <span class="op">=</span> pca.fit_transform(images_flat)  <span class="co"># Aplicar PCA</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> transformed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ImageDataGenerator:</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, df, ct_folder, max_samples, cervical, vertebrae_info, batch_size<span class="op">=</span><span class="dv">32</span>):</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.df <span class="op">=</span> df</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.ct_folder <span class="op">=</span> ct_folder</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.batch_size <span class="op">=</span> batch_size</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.num_samples <span class="op">=</span> <span class="bu">len</span>(df)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.current_idx <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.cervical <span class="op">=</span> cervical</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.vertebrae_info <span class="op">=</span> vertebrae_info</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.max_samples <span class="op">=</span> max_samples</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__iter__</span>(<span class="va">self</span>):</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__next__</span>(<span class="va">self</span>):</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>        <span class="co"># batch_images = []</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>        <span class="co"># batch_labels = []</span></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>        batch_images <span class="op">=</span> torch.zeros((<span class="va">self</span>.batch_size, <span class="va">self</span>.max_samples, <span class="dv">3</span>, <span class="dv">224</span>, <span class="dv">224</span>))</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>        batch_labels <span class="op">=</span> torch.zeros((<span class="va">self</span>.batch_size, <span class="dv">1</span>)) </span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>        max_length <span class="op">=</span> <span class="va">self</span>.max_samples</span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="va">self</span>.batch_size):</span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="va">self</span>.current_idx <span class="op">&gt;=</span> <span class="va">self</span>.num_samples:</span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>                <span class="va">self</span>.current_idx <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a>                <span class="cf">raise</span> <span class="pp">StopIteration</span></span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a>            ct_name <span class="op">=</span> <span class="va">self</span>.df.iloc[<span class="va">self</span>.current_idx][<span class="st">'StudyInstanceUID'</span>]</span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>            labels <span class="op">=</span> [<span class="bu">float</span>(<span class="va">self</span>.df.iloc[<span class="va">self</span>.current_idx][<span class="st">'C'</span> <span class="op">+</span> <span class="bu">str</span>(<span class="va">self</span>.cervical)])]</span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>            filas_seleccionadas <span class="op">=</span> <span class="va">self</span>.vertebrae_info.loc[(<span class="va">self</span>.vertebrae_info[<span class="st">'StudyInstanceUID'</span>] <span class="op">==</span> ct_name) <span class="op">&amp;</span> (<span class="va">self</span>.vertebrae_info[<span class="st">'C'</span> <span class="op">+</span> <span class="bu">str</span>(<span class="va">self</span>.cervical)] <span class="op">==</span> <span class="dv">1</span>)]</span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a>            <span class="co"># labels = self.df.iloc[self.current_idx][['C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7']].tolist()</span></span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="kw">not</span> filas_seleccionadas.empty:</span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a>                slice_numbers <span class="op">=</span> filas_seleccionadas[<span class="st">'Slice'</span>].tolist()</span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a>                <span class="cf">with</span> ZipFile(os.path.join(<span class="va">self</span>.ct_folder, ct_name <span class="op">+</span> <span class="st">'.zip'</span>), <span class="st">'r'</span>) <span class="im">as</span> zip_ref:</span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a>                    image_files <span class="op">=</span> zip_ref.namelist()</span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># Read and process each image</span></span>
+<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a>                    ct_images <span class="op">=</span> []</span>
+<span id="cb17-37"><a href="#cb17-37" aria-hidden="true" tabindex="-1"></a>                    counter <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb17-38"><a href="#cb17-38" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">for</span> image_file <span class="kw">in</span> image_files:</span>
+<span id="cb17-39"><a href="#cb17-39" aria-hidden="true" tabindex="-1"></a>                        slice_number <span class="op">=</span> <span class="bu">int</span>(image_file.split(<span class="st">'.jpg'</span>)[<span class="dv">0</span>].split(<span class="st">'/'</span>)[<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb17-40"><a href="#cb17-40" aria-hidden="true" tabindex="-1"></a>                        <span class="cf">if</span> slice_number <span class="kw">in</span> slice_numbers:</span>
+<span id="cb17-41"><a href="#cb17-41" aria-hidden="true" tabindex="-1"></a>                            <span class="cf">with</span> zip_ref.<span class="bu">open</span>(image_file) <span class="im">as</span> img_file:</span>
+<span id="cb17-42"><a href="#cb17-42" aria-hidden="true" tabindex="-1"></a>                                image <span class="op">=</span> Image.<span class="bu">open</span>(img_file)  <span class="co"># Load the image</span></span>
+<span id="cb17-43"><a href="#cb17-43" aria-hidden="true" tabindex="-1"></a>                                image <span class="op">=</span> preprocess_image_for_combined_model(image)</span>
+<span id="cb17-44"><a href="#cb17-44" aria-hidden="true" tabindex="-1"></a>                                <span class="co"># ct_images.append(image)</span></span>
+<span id="cb17-45"><a href="#cb17-45" aria-hidden="true" tabindex="-1"></a>                                batch_images[i, counter] <span class="op">=</span> image</span>
+<span id="cb17-46"><a href="#cb17-46" aria-hidden="true" tabindex="-1"></a>                            counter <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb17-47"><a href="#cb17-47" aria-hidden="true" tabindex="-1"></a>                            <span class="cf">if</span> counter <span class="op">==</span> max_length:</span>
+<span id="cb17-48"><a href="#cb17-48" aria-hidden="true" tabindex="-1"></a>                                <span class="cf">break</span></span>
+<span id="cb17-49"><a href="#cb17-49" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># ct_images = apply_PCA(torch.stack(ct_images))</span></span>
+<span id="cb17-50"><a href="#cb17-50" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># print(ct_images.shape)</span></span>
+<span id="cb17-51"><a href="#cb17-51" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">while</span> counter <span class="op">&lt;</span> max_length:</span>
+<span id="cb17-52"><a href="#cb17-52" aria-hidden="true" tabindex="-1"></a>                        <span class="co"># ct_images.append(torch.zeros(3, 224, 224))</span></span>
+<span id="cb17-53"><a href="#cb17-53" aria-hidden="true" tabindex="-1"></a>                        batch_images[i, counter] <span class="op">=</span> torch.zeros(<span class="dv">3</span>, <span class="dv">224</span>, <span class="dv">224</span>)</span>
+<span id="cb17-54"><a href="#cb17-54" aria-hidden="true" tabindex="-1"></a>                        counter <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb17-55"><a href="#cb17-55" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># Append images and labels to the batch=</span></span>
+<span id="cb17-56"><a href="#cb17-56" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># batch_images.append(ct_images)</span></span>
+<span id="cb17-57"><a href="#cb17-57" aria-hidden="true" tabindex="-1"></a>                    </span>
+<span id="cb17-58"><a href="#cb17-58" aria-hidden="true" tabindex="-1"></a>                    <span class="co"># batch_labels.append(labels)</span></span>
+<span id="cb17-59"><a href="#cb17-59" aria-hidden="true" tabindex="-1"></a>            batch_labels[i] <span class="op">=</span> torch.tensor(labels)</span>
+<span id="cb17-60"><a href="#cb17-60" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.current_idx <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb17-61"><a href="#cb17-61" aria-hidden="true" tabindex="-1"></a>        <span class="co"># for el in batch_images:</span></span>
+<span id="cb17-62"><a href="#cb17-62" aria-hidden="true" tabindex="-1"></a>        <span class="co">#     for el2 in el:</span></span>
+<span id="cb17-63"><a href="#cb17-63" aria-hidden="true" tabindex="-1"></a>        <span class="co">#         print(type(el2))</span></span>
+<span id="cb17-64"><a href="#cb17-64" aria-hidden="true" tabindex="-1"></a>        <span class="co"># batch_images = np.array(batch_images)</span></span>
+<span id="cb17-65"><a href="#cb17-65" aria-hidden="true" tabindex="-1"></a>        <span class="co"># batch_labels = np.array(batch_labels)</span></span>
+<span id="cb17-66"><a href="#cb17-66" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> batch_images, batch_labels</span>
+<span id="cb17-67"><a href="#cb17-67" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb17-68"><a href="#cb17-68" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__len__</span>(<span class="va">self</span>):</span>
+<span id="cb17-69"><a href="#cb17-69" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Devuelve la longitud total del generador</span></span>
+<span id="cb17-70"><a href="#cb17-70" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.num_samples</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>batch_size <span class="op">=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>data_generator <span class="op">=</span> ImageDataGenerator(train_data, <span class="st">'imagenes_train'</span>, <span class="dv">80</span>, <span class="dv">6</span>, data_vertebrae, batch_size<span class="op">=</span>batch_size)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>data_generator_test <span class="op">=</span> ImageDataGenerator(test_data, <span class="st">'imagenes_train'</span>, <span class="dv">80</span>, <span class="dv">6</span>, data_vertebrae, batch_size<span class="op">=</span>batch_size)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Especifica la carpeta donde se almacenarán los registros de TensorBoard</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>log_dir <span class="op">=</span> <span class="st">"logs"</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicializa TensorBoard</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>writer <span class="op">=</span> SummaryWriter(log_dir<span class="op">=</span>os.path.join(log_dir, <span class="st">'loss'</span>))</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>accuracy_writer <span class="op">=</span> SummaryWriter(log_dir<span class="op">=</span>os.path.join(log_dir, <span class="st">'accuracy'</span>))</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>F1_writer <span class="op">=</span> SummaryWriter(log_dir<span class="op">=</span>os.path.join(log_dir, <span class="st">'F1'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Hiperparámetros de entrenamiento</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>learning_rate <span class="op">=</span> <span class="fl">0.001</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>num_epochs <span class="op">=</span> <span class="dv">10</span>  <span class="co"># Número de épocas (iteraciones completas sobre el conjunto de datos)</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>display_step <span class="op">=</span> <span class="dv">8</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>accumulation_steps <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Suponiendo que `data_generator` es la instancia del generador de datos que creamos antes</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Definir la función de pérdida y el optimizador</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="co"># criterion = WeightedMultiLabelLogLoss()  # Suponiendo una tarea de clasificación</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>criterion <span class="op">=</span> nn.BCELoss()</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>optimizer <span class="op">=</span> optim.Adam(combined_model.parameters(), lr<span class="op">=</span>learning_rate)</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Entrenamiento del modelo</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>combined_model.train()  <span class="co"># Poner el modelo en modo de entrenamiento</span></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>loss_list <span class="op">=</span> []</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>accuracy_list <span class="op">=</span> []</span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>F1_list <span class="op">=</span> []</span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> epoch <span class="kw">in</span> <span class="bu">range</span>(num_epochs):</span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>    total_loss <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>    total_accuracy <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>    running_loss <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>    counter <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>    running_accuracy <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>    F1_acum <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>    running_F1 <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a>    total_F1 <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a>    loss_acum <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a>    optimizer.zero_grad()  <span class="co"># Reiniciar los gradientes acumulados</span></span>
+<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Iterar a través del generador en mini lotes</span></span>
+<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, (images_tensor, labels_tensor) <span class="kw">in</span> tqdm(<span class="bu">enumerate</span>(data_generator), total<span class="op">=</span><span class="bu">len</span>(data_generator)):</span>
+<span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># for i, (images_tensor, labels_tensor) in enumerate(data_generator):</span></span>
+<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a>        <span class="co"># print(i)</span></span>
+<span id="cb21-34"><a href="#cb21-34" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Convertir el lote de imágenes a tensores y pasarlos por el modelo</span></span>
+<span id="cb21-35"><a href="#cb21-35" aria-hidden="true" tabindex="-1"></a>        <span class="co"># try:</span></span>
+<span id="cb21-36"><a href="#cb21-36" aria-hidden="true" tabindex="-1"></a>        torch.cuda.empty_cache()</span>
+<span id="cb21-37"><a href="#cb21-37" aria-hidden="true" tabindex="-1"></a>        images_tensor <span class="op">=</span> images_tensor.to(<span class="st">'cuda'</span>)</span>
+<span id="cb21-38"><a href="#cb21-38" aria-hidden="true" tabindex="-1"></a>        labels_tensor <span class="op">=</span> labels_tensor.to(<span class="st">'cuda'</span>)</span>
+<span id="cb21-39"><a href="#cb21-39" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Realizar la propagación hacia adelante (forward pass)</span></span>
+<span id="cb21-40"><a href="#cb21-40" aria-hidden="true" tabindex="-1"></a>        predictions <span class="op">=</span> combined_model(images_tensor)</span>
+<span id="cb21-41"><a href="#cb21-41" aria-hidden="true" tabindex="-1"></a>        <span class="co"># print(predictions, labels_batch)</span></span>
+<span id="cb21-42"><a href="#cb21-42" aria-hidden="true" tabindex="-1"></a>        <span class="co"># predictions = torch.mean(predictions, dim=0, keepdim=False)</span></span>
+<span id="cb21-43"><a href="#cb21-43" aria-hidden="true" tabindex="-1"></a>        loss <span class="op">=</span> criterion(predictions, labels_tensor)</span>
+<span id="cb21-44"><a href="#cb21-44" aria-hidden="true" tabindex="-1"></a>        threshold <span class="op">=</span> <span class="fl">0.5</span></span>
+<span id="cb21-45"><a href="#cb21-45" aria-hidden="true" tabindex="-1"></a>        predicted_labels <span class="op">=</span> (predictions <span class="op">&gt;</span> threshold).<span class="bu">float</span>()  <span class="co"># 1 si es mayor al umbral, 0 de lo contrario</span></span>
+<span id="cb21-46"><a href="#cb21-46" aria-hidden="true" tabindex="-1"></a>        predicted_labels_np <span class="op">=</span> predicted_labels.cpu().numpy()</span>
+<span id="cb21-47"><a href="#cb21-47" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb21-48"><a href="#cb21-48" aria-hidden="true" tabindex="-1"></a>        <span class="co"># print(predictions)</span></span>
+<span id="cb21-49"><a href="#cb21-49" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Calcular la precisión</span></span>
+<span id="cb21-50"><a href="#cb21-50" aria-hidden="true" tabindex="-1"></a>        correct_batch <span class="op">=</span> (predicted_labels <span class="op">==</span> labels_tensor).<span class="bu">all</span>(dim<span class="op">=</span><span class="dv">1</span>).<span class="bu">sum</span>().item()</span>
+<span id="cb21-51"><a href="#cb21-51" aria-hidden="true" tabindex="-1"></a>        total_accuracy <span class="op">+=</span> correct_batch</span>
+<span id="cb21-52"><a href="#cb21-52" aria-hidden="true" tabindex="-1"></a>        running_accuracy <span class="op">+=</span> correct_batch</span>
+<span id="cb21-53"><a href="#cb21-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-54"><a href="#cb21-54" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Calcular F1</span></span>
+<span id="cb21-55"><a href="#cb21-55" aria-hidden="true" tabindex="-1"></a>        running_F1 <span class="op">+=</span> f1_score(labels_tensor.cpu().numpy(), predicted_labels_np, average<span class="op">=</span><span class="st">'weighted'</span>)</span>
+<span id="cb21-56"><a href="#cb21-56" aria-hidden="true" tabindex="-1"></a>        F1_acum <span class="op">+=</span> f1_score(labels_tensor.cpu().numpy(), predicted_labels_np, average<span class="op">=</span><span class="st">'weighted'</span>)</span>
+<span id="cb21-57"><a href="#cb21-57" aria-hidden="true" tabindex="-1"></a>        total_F1 <span class="op">+=</span> f1_score(labels_tensor.cpu().numpy(), predicted_labels_np, average<span class="op">=</span><span class="st">'weighted'</span>)</span>
+<span id="cb21-58"><a href="#cb21-58" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb21-59"><a href="#cb21-59" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb21-60"><a href="#cb21-60" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (i <span class="op">+</span> <span class="dv">1</span>) <span class="op">%</span> accumulation_steps <span class="op">==</span> <span class="dv">0</span> <span class="kw">or</span> i <span class="op">==</span> <span class="bu">len</span>(data_generator) <span class="op">-</span> <span class="dv">1</span>:</span>
+<span id="cb21-61"><a href="#cb21-61" aria-hidden="true" tabindex="-1"></a>            loss.backward()</span>
+<span id="cb21-62"><a href="#cb21-62" aria-hidden="true" tabindex="-1"></a>            optimizer.step()  <span class="co"># Actualizar los pesos</span></span>
+<span id="cb21-63"><a href="#cb21-63" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb21-64"><a href="#cb21-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-65"><a href="#cb21-65" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Acumular la pérdida total</span></span>
+<span id="cb21-66"><a href="#cb21-66" aria-hidden="true" tabindex="-1"></a>        total_loss <span class="op">+=</span> loss.item()</span>
+<span id="cb21-67"><a href="#cb21-67" aria-hidden="true" tabindex="-1"></a>        running_loss <span class="op">+=</span> loss.item()</span>
+<span id="cb21-68"><a href="#cb21-68" aria-hidden="true" tabindex="-1"></a>        <span class="co"># total_accuracy += accuracy</span></span>
+<span id="cb21-69"><a href="#cb21-69" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb21-70"><a href="#cb21-70" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Actualizar la pérdida en tiempo real en TensorBoard</span></span>
+<span id="cb21-71"><a href="#cb21-71" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> i <span class="op">%</span> display_step <span class="op">==</span> display_step <span class="op">-</span> <span class="dv">1</span>:</span>
+<span id="cb21-72"><a href="#cb21-72" aria-hidden="true" tabindex="-1"></a>            avg_loss <span class="op">=</span> running_loss <span class="op">/</span> display_step</span>
+<span id="cb21-73"><a href="#cb21-73" aria-hidden="true" tabindex="-1"></a>            writer.add_scalar(<span class="st">'Loss'</span>, avg_loss, epoch <span class="op">*</span> <span class="bu">len</span>(data_generator) <span class="op">+</span> i)</span>
+<span id="cb21-74"><a href="#cb21-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-75"><a href="#cb21-75" aria-hidden="true" tabindex="-1"></a>            running_loss <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb21-76"><a href="#cb21-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-77"><a href="#cb21-77" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Actualizar la precisión en tiempo real en TensorBoard</span></span>
+<span id="cb21-78"><a href="#cb21-78" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> i <span class="op">%</span> display_step <span class="op">==</span> display_step <span class="op">-</span> <span class="dv">1</span>:</span>
+<span id="cb21-79"><a href="#cb21-79" aria-hidden="true" tabindex="-1"></a>            avg_accuracy <span class="op">=</span> running_accuracy <span class="op">/</span> display_step</span>
+<span id="cb21-80"><a href="#cb21-80" aria-hidden="true" tabindex="-1"></a>            accuracy_writer.add_scalar(<span class="st">'Accuracy'</span>, avg_accuracy, epoch <span class="op">*</span> <span class="bu">len</span>(data_generator) <span class="op">+</span> i)</span>
+<span id="cb21-81"><a href="#cb21-81" aria-hidden="true" tabindex="-1"></a>            running_accuracy <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb21-82"><a href="#cb21-82" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb21-83"><a href="#cb21-83" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Actualizar la precisión en tiempo real en TensorBoard</span></span>
+<span id="cb21-84"><a href="#cb21-84" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> i <span class="op">%</span> display_step <span class="op">==</span> display_step <span class="op">-</span> <span class="dv">1</span>:</span>
+<span id="cb21-85"><a href="#cb21-85" aria-hidden="true" tabindex="-1"></a>            avg_F1 <span class="op">=</span> running_F1 <span class="op">/</span> display_step</span>
+<span id="cb21-86"><a href="#cb21-86" aria-hidden="true" tabindex="-1"></a>            F1_writer.add_scalar(<span class="st">'F1'</span>, avg_F1, epoch <span class="op">*</span> <span class="bu">len</span>(data_generator) <span class="op">+</span> i)</span>
+<span id="cb21-87"><a href="#cb21-87" aria-hidden="true" tabindex="-1"></a>            running_F1 <span class="op">=</span> <span class="fl">0.0</span></span>
+<span id="cb21-88"><a href="#cb21-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-89"><a href="#cb21-89" aria-hidden="true" tabindex="-1"></a>        <span class="co"># except:</span></span>
+<span id="cb21-90"><a href="#cb21-90" aria-hidden="true" tabindex="-1"></a>        <span class="co">#     print("error")</span></span>
+<span id="cb21-91"><a href="#cb21-91" aria-hidden="true" tabindex="-1"></a>        <span class="co">#     continue</span></span>
+<span id="cb21-92"><a href="#cb21-92" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb21-93"><a href="#cb21-93" aria-hidden="true" tabindex="-1"></a>        <span class="co"># if i % display_step == display_step - 1:</span></span>
+<span id="cb21-94"><a href="#cb21-94" aria-hidden="true" tabindex="-1"></a>        <span class="co">#     # print('entre')</span></span>
+<span id="cb21-95"><a href="#cb21-95" aria-hidden="true" tabindex="-1"></a>        <span class="co">#     avg_loss = running_loss / display_step</span></span>
+<span id="cb21-96"><a href="#cb21-96" aria-hidden="true" tabindex="-1"></a>        <span class="co">#     writer.add_scalar('Loss', avg_loss, epoch * len(data_generator) + i)</span></span>
+<span id="cb21-97"><a href="#cb21-97" aria-hidden="true" tabindex="-1"></a>        <span class="co">#     running_loss = 0.0</span></span>
+<span id="cb21-98"><a href="#cb21-98" aria-hidden="true" tabindex="-1"></a>        counter <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb21-99"><a href="#cb21-99" aria-hidden="true" tabindex="-1"></a>        <span class="co"># if counter == 100:</span></span>
+<span id="cb21-100"><a href="#cb21-100" aria-hidden="true" tabindex="-1"></a>        <span class="co">#     break</span></span>
+<span id="cb21-101"><a href="#cb21-101" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calcular la pérdida promedio para la época</span></span>
+<span id="cb21-102"><a href="#cb21-102" aria-hidden="true" tabindex="-1"></a>    average_loss <span class="op">=</span> total_loss <span class="op">/</span> <span class="bu">len</span>(data_generator)</span>
+<span id="cb21-103"><a href="#cb21-103" aria-hidden="true" tabindex="-1"></a>    loss_list.append(average_loss)</span>
+<span id="cb21-104"><a href="#cb21-104" aria-hidden="true" tabindex="-1"></a>    F1_list.append(F1_acum <span class="op">/</span> <span class="bu">len</span>(data_generator))</span>
+<span id="cb21-105"><a href="#cb21-105" aria-hidden="true" tabindex="-1"></a>    accuracy_list.append(total_accuracy <span class="op">/</span> <span class="bu">len</span>(data_generator))</span>
+<span id="cb21-106"><a href="#cb21-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-107"><a href="#cb21-107" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'Epoch [</span><span class="sc">{</span>epoch <span class="op">+</span> <span class="dv">1</span><span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>num_epochs<span class="sc">}</span><span class="ss">], Loss: </span><span class="sc">{</span>average_loss<span class="sc">:.4f}</span><span class="ss">'</span>)</span>
+<span id="cb21-108"><a href="#cb21-108" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'Accuracy: </span><span class="sc">{</span>total_accuracy <span class="op">/</span> <span class="bu">len</span>(data_generator)<span class="sc">:.4f}</span><span class="ss">'</span>)</span>
+<span id="cb21-109"><a href="#cb21-109" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f'F1: </span><span class="sc">{</span>F1_acum <span class="op">/</span> <span class="bu">len</span>(data_generator)<span class="sc">:.4f}</span><span class="ss">'</span>)</span>
+<span id="cb21-110"><a href="#cb21-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-111"><a href="#cb21-111" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Entrenamiento completado.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>  0%|          | 0/480 [00:00&lt;?, ?it/s]</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>100%|██████████| 480/480 [52:41&lt;00:00,  6.59s/it] </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Epoch [1/10], Loss: 0.7559
+Accuracy: 0.8583
+F1: 0.8583</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>100%|██████████| 480/480 [48:57&lt;00:00,  6.12s/it] </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Epoch [2/10], Loss: 0.8162
+Accuracy: 0.8375
+F1: 0.8375</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>100%|██████████| 480/480 [48:48&lt;00:00,  6.10s/it] </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Epoch [3/10], Loss: 0.7542
+Accuracy: 0.8208
+F1: 0.8208</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>100%|██████████| 480/480 [48:52&lt;00:00,  6.11s/it] </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Epoch [4/10], Loss: 1.6990
+Accuracy: 0.8438
+F1: 0.8438</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>100%|██████████| 480/480 [46:58&lt;00:00,  5.87s/it]</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Epoch [5/10], Loss: 2.0450
+Accuracy: 0.8688
+F1: 0.8688</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>100%|██████████| 480/480 [46:46&lt;00:00,  5.85s/it]</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Epoch [6/10], Loss: 1.7030
+Accuracy: 0.7646
+F1: 0.7646</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>100%|██████████| 480/480 [46:45&lt;00:00,  5.84s/it]</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Epoch [7/10], Loss: 2.1101
+Accuracy: 0.8125
+F1: 0.8125</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>100%|██████████| 480/480 [46:55&lt;00:00,  5.87s/it]</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Epoch [8/10], Loss: 3.1510
+Accuracy: 0.8688
+F1: 0.8688</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>100%|██████████| 480/480 [46:45&lt;00:00,  5.85s/it]</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Epoch [9/10], Loss: 3.0828
+Accuracy: 0.8688
+F1: 0.8688</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>100%|██████████| 480/480 [46:50&lt;00:00,  5.86s/it]</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Epoch [10/10], Loss: 3.5021
+Accuracy: 0.8688
+F1: 0.8688
+Entrenamiento completado.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code></code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(loss_list)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(F1_list)</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(accuracy_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[0.7559443679196259, 0.816194257804949, 0.7541898255290865, 1.6990159884277545, 2.045001005133757, 1.7029958523413606, 2.11005919107088, 3.1510204792022707, 3.0828415264685947, 3.502082268397013]
+[0.8583333333333333, 0.8375, 0.8208333333333333, 0.84375, 0.86875, 0.7645833333333333, 0.8125, 0.86875, 0.86875, 0.86875]
+[0.8583333333333333, 0.8375, 0.8208333333333333, 0.84375, 0.86875, 0.7645833333333333, 0.8125, 0.86875, 0.86875, 0.86875]</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>plt.plot(loss_list, label<span class="op">=</span><span class="st">'Training Loss'</span>)</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Epochs'</span>)</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Loss'</span>)</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Proyecto_modelos_files/figure-html/cell-21-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Supongamos que ya has entrenado el modelo y deseas guardarlo</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>torch.save(combined_model.state_dict(), <span class="st">'modelo_entrenadoC6.pth'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cargar el modelo entrenado</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>combined_model <span class="op">=</span> CombinedModel(vgg_output_size, gru_hidden_size, gru_num_layers, num_classes)</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>combined_model.load_state_dict(torch.load(<span class="st">'modelo_entrenadoC6.pth'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>c:\Users\Daniel\Main\UVG\Semestre_VIII\Data_science\Proyecto2\envi\lib\site-packages\torchvision\models\_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+c:\Users\Daniel\Main\UVG\Semestre_VIII\Data_science\Proyecto2\envi\lib\site-packages\torchvision\models\_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=EfficientNet_B0_Weights.IMAGENET1K_V1`. You can also use `weights=EfficientNet_B0_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<pre><code>&lt;All keys matched successfully&gt;</code></pre>
+</div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
